@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Celestial Curator | Interactive Media Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ffb778",
+              "secondary-fixed": "#9cf0ff",
+              "surface-variant": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-fixed-variant": "#004f58",
+              "inverse-on-surface": "#313030",
+              "error-container": "#93000a",
+              "on-background": "#e5e2e1",
+              "on-tertiary-container": "#c46e00",
+              "on-primary": "#441c65",
+              "surface-container-highest": "#353534",
+              "primary": "#dfb7ff",
+              "inverse-surface": "#e5e2e1",
+              "error": "#ffb4ab",
+              "outline": "#978e9a",
+              "on-primary-container": "#9c72c0",
+              "primary-fixed-dim": "#dfb7ff",
+              "on-error": "#690005",
+              "on-surface": "#e5e2e1",
+              "surface-dim": "#131313",
+              "secondary-container": "#00e3fd",
+              "background": "#131313",
+              "tertiary": "#ffb778",
+              "on-secondary-fixed": "#001f24",
+              "on-primary-fixed": "#2d004f",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-container": "#2e1500",
+              "on-tertiary": "#4c2700",
+              "outline-variant": "#4b444f",
+              "surface-container": "#201f1f",
+              "secondary": "#bdf4ff",
+              "tertiary-fixed": "#ffdcc1",
+              "secondary-fixed-dim": "#00daf3",
+              "on-primary-fixed-variant": "#5b347d",
+              "inverse-primary": "#754d97",
+              "on-tertiary-fixed-variant": "#6c3a00",
+              "on-tertiary-fixed": "#2e1500",
+              "on-surface-variant": "#cec3d0",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#3a3939",
+              "primary-container": "#2d004f",
+              "primary-fixed": "#f1daff",
+              "surface-tint": "#dfb7ff",
+              "on-secondary-container": "#00616d",
+              "on-secondary": "#00363d",
+              "surface": "#131313"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+        }
+        .orbit-animation {
+            animation: orbit var(--orbit-duration) linear infinite;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        .star-field {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .no-line-rule { border: none !important; }
+        .tonal-shift-only { background-color: rgba(255, 255, 255, 0.03); }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- NAVIGATION SHELL -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 dark:bg-neutral-950/40 backdrop-blur-xl flex justify-between items-center px-8 py-6 max-w-full shadow-[0_0_40px_-10px_rgba(223,183,255,0.1)]">
+<div class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300 font-headline">
+            Celestial Curator
+        </div>
+<div class="hidden md:flex gap-8 items-center font-['Space_Grotesk'] tracking-widest uppercase text-sm">
+<a class="text-purple-300 border-b-2 border-purple-400/50 pb-1 ease-in-out duration-500 hover:scale-105" href="#">Portfolio</a>
+<a class="text-neutral-400 hover:text-neutral-100 transition-colors ease-in-out duration-500 hover:scale-105" href="#">Process</a>
+<a class="text-neutral-400 hover:text-neutral-100 transition-colors ease-in-out duration-500 hover:scale-105" href="#">About</a>
+<a class="text-neutral-400 hover:text-neutral-100 transition-colors ease-in-out duration-500 hover:scale-105" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-purple-200 dark:text-purple-200 hover:scale-110 transition-transform">star_rate</button>
+</div>
+</nav>
+<!-- HERO SECTION: MACRO VIEW -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden star-field">
+<!-- Celestial Bodies (Orbits) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<!-- Central Core Glow -->
+<div class="absolute w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+<!-- Orbit Ring 1 -->
+<div class="absolute w-[300px] h-[300px] border border-primary/20 rounded-full"></div>
+<div class="absolute w-6 h-6 bg-secondary-fixed-dim rounded-full orbit-animation shadow-[0_0_15px_#00daf3]" style="--orbit-radius: 150px; --orbit-duration: 8s;"></div>
+<!-- Orbit Ring 2 -->
+<div class="absolute w-[500px] h-[500px] border border-secondary/10 rounded-full"></div>
+<div class="absolute w-4 h-4 bg-tertiary-fixed-dim rounded-full orbit-animation shadow-[0_0_10px_#ffb778]" style="--orbit-radius: 250px; --orbit-duration: 12s;"></div>
+<!-- Orbit Ring 3 -->
+<div class="absolute w-[750px] h-[750px] border border-primary/5 rounded-full"></div>
+<div class="absolute w-8 h-8 bg-primary rounded-full orbit-animation shadow-[0_0_20px_#dfb7ff]" style="--orbit-radius: 375px; --orbit-duration: 20s;"></div>
+</div>
+<div class="relative z-10 text-center px-4">
+<h1 class="font-headline text-6xl md:text-9xl font-bold tracking-tighter text-on-surface mb-4">
+                CELESTIAL CURATOR
+            </h1>
+<p class="font-headline text-lg md:text-2xl tracking-[0.5em] text-secondary uppercase opacity-80">
+                Mapping the Infinite Void
+            </p>
+<div class="mt-12 flex justify-center">
+<div class="w-px h-24 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
+</div>
+</div>
+</section>
+<!-- PROJECT SECTION: MICRO VIEW -->
+<section class="relative z-20 py-32 px-8 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col mb-24 space-y-4">
+<span class="font-label text-xs tracking-[0.3em] uppercase text-primary">System Observation</span>
+<h2 class="font-headline text-5xl font-bold text-on-surface">Interactive Clusters</h2>
+</div>
+<!-- Bento-style Grid of Flip Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1: Nebula Stream -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<span class="material-symbols-outlined text-6xl mb-6 text-primary" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Nebula Stream</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-secondary">Fluid Dynamics</div>
+<img class="absolute bottom-0 left-0 w-full h-1/2 object-cover opacity-30 mask-linear-gradient" data-alt="Vibrant swirling purple and pink nebula" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7vpW6Wcfd_XQ8qo9wahdf9NTx5YDqQOdWUFu9hACxJ0s4s0JgOsT5JCK4BqRKyTtAotqFnuLXOAdFV9Q6TI25T5DOlPf1JEGM9g9vu0Hgp1qmfqF4QsaIkuqfBQuhXNU0rRLGqPGRM57l42t2fwqvADPI3pWrTLndI_FMrsiKSvM7n98sAcWA4_0Z0joK1PcwRNdsasWMPhMKhSSt29SJOtP4e2QSMl9RGtuJKkoCBny-VkIH2CoJmQXkSgBVKDkQQNXd0NJQTkXo"/>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Nebula Stream</h3>
+<p class="font-body text-surface-variant leading-relaxed">A real-time generative art installation simulating the birth of stars through participant movement and touch inputs.</p>
+</div>
+<button class="w-full py-4 bg-primary-container text-primary font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-on-primary-fixed transition-colors">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 2: Solar Flare -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent"></div>
+<span class="material-symbols-outlined text-6xl mb-6 text-tertiary" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Solar Flare</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-tertiary">Heat Mapping</div>
+<img class="absolute bottom-0 left-0 w-full h-1/2 object-cover opacity-30" data-alt="High contrast solar eruption visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq6aX1S4rQqYF3hl6hDg8xg836h4pGoVKsA2kQjV7o5iz0ffUzkFr_klaKz5xkzzNc4WjBrS4FY6U5pyRQzvfnXxynDqoVVwXFEA3cA5E3WxXphj4rmQK7rBfr9MkrlM4dm_7YW9NkIKADAXuawhAByakUlcmnu-S03t-iUPyiXY1U5OhmGpld2B5_Wv06EBOE9F_uWgI-5-9cSe68-6uiXVjj1DJHY563gZr81eSrXkMcWuBA3woBlGGYqSDhtTDYGpeAjOFM9Joc"/>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Solar Flare</h3>
+<p class="font-body text-surface-variant leading-relaxed">Experimental visualization of solar magnetic activity, translated into an interactive 3D web experience.</p>
+</div>
+<button class="w-full py-4 bg-tertiary-container text-tertiary font-bold rounded-xl flex items-center justify-center gap-2">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 3: Gravity Core -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent"></div>
+<span class="material-symbols-outlined text-6xl mb-6 text-secondary" style="font-variation-settings: 'FILL' 1;">vertex_cluster</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Gravity Core</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-secondary">Physics Engine</div>
+<img class="absolute bottom-0 left-0 w-full h-1/2 object-cover opacity-30" data-alt="Abstract space curvature illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP90TAOaqHq5xc5BaDbs6D4vtKTo5g5TV8dnF2SWGXtuDMpeggmtYWmpzGfBuM9Il2CVkE5hp6EGSFDw5dS2oK3eDmboYRKLSmbW1ZKaAGbDUFLIToK-siXzyuJFfXtaPG5JBAv1gyujkYKgoCRADwnbBmAf2Y_NR14WFbsnYsRGQiwzCsxLuxDy_wTGacV8uYNBiEJLpNMEKMwa4bNwAJ_gKfxZZIwsJK1KdV-fpiOlI6awRmDWL8VULfgDK2rMPDhfZ53j154Yic"/>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Gravity Core</h3>
+<p class="font-body text-surface-variant leading-relaxed">A game-based exploration of gravitational waves using haptic feedback and spatial audio.</p>
+</div>
+<button class="w-full py-4 bg-secondary-container text-secondary-fixed-dim font-bold rounded-xl flex items-center justify-center gap-2">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 4: Event Horizon -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<span class="material-symbols-outlined text-6xl mb-6 text-primary-fixed">dark_mode</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Event Horizon</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-primary">UI Framework</div>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Event Horizon</h3>
+<p class="font-body text-surface-variant leading-relaxed">Designing the interface for a hypothetical deep-space exploration vessel cockpit.</p>
+</div>
+<button class="w-full py-4 bg-primary-container text-primary font-bold rounded-xl flex items-center justify-center gap-2">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 5: Pulsar Pulse -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<span class="material-symbols-outlined text-6xl mb-6 text-secondary-fixed-dim">waves</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Pulsar Pulse</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-secondary">Audio Reactive</div>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Pulsar Pulse</h3>
+<p class="font-body text-surface-variant leading-relaxed">Translating astronomical radio signals into rhythmic, pulsating light sculptures.</p>
+</div>
+<button class="w-full py-4 bg-secondary-container text-secondary-fixed-dim font-bold rounded-xl flex items-center justify-center gap-2">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 6: Star Map -->
+<div class="flip-card perspective-1000 h-[450px]">
+<div class="flip-card-inner relative w-full h-full shadow-2xl rounded-xl">
+<div class="flip-card-front bg-surface-container-high flex flex-col items-center justify-center p-8 rounded-xl overflow-hidden border border-outline-variant/10">
+<span class="material-symbols-outlined text-6xl mb-6 text-tertiary-fixed-dim">map</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-wider">Star Map</h3>
+<div class="mt-4 px-4 py-1 bg-surface-container-highest rounded-full text-[10px] font-label tracking-widest uppercase text-tertiary">Cartography</div>
+</div>
+<div class="flip-card-back bg-white text-surface-container-lowest p-10 flex flex-col justify-between rounded-xl">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-surface-container-lowest mb-4">Star Map</h3>
+<p class="font-body text-surface-variant leading-relaxed">A speculative cartography project imagining the borders of interstellar territories.</p>
+</div>
+<button class="w-full py-4 bg-tertiary-container text-tertiary font-bold rounded-xl flex items-center justify-center gap-2">
+                                View Coordinates <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="w-full py-12 bg-transparent flex flex-col md:flex-row justify-between items-center px-12 gap-4">
+<div class="font-['Inter'] text-xs tracking-widest uppercase opacity-60 text-cyan-400 dark:text-cyan-400">
+            © 2024 Celestial Curator. Built in the Deep Space spectrum.
+        </div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs tracking-widest uppercase opacity-60 text-neutral-500 hover:text-purple-300 transition-colors duration-300" href="#">LinkedIn</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase opacity-60 text-neutral-500 hover:text-purple-300 transition-colors duration-300" href="#">GitHub</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase opacity-60 text-neutral-500 hover:text-purple-300 transition-colors duration-300" href="#">Read.cv</a>
+</div>
+</footer>
+<!-- BACKGROUND AMBIENT ORBS (Floating Stars) -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-[10%] left-[20%] w-1 h-1 bg-white rounded-full opacity-40 shadow-[0_0_8px_white]"></div>
+<div class="absolute top-[40%] right-[15%] w-2 h-2 bg-secondary rounded-full opacity-20 shadow-[0_0_12px_cyan]"></div>
+<div class="absolute bottom-[20%] left-[10%] w-1.5 h-1.5 bg-primary rounded-full opacity-30 shadow-[0_0_10px_purple]"></div>
+<div class="absolute bottom-[40%] right-[30%] w-1 h-1 bg-white rounded-full opacity-50 shadow-[0_0_8px_white]"></div>
+</div>
+</body></html>
